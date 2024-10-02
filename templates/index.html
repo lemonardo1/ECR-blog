@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/" style="text-decoration: none; color: inherit;">ECR Blog</a></h1>
+    </header>
+
+    <main>
+        {% for folder, posts in grouped_posts.items() %}
+        <section>
+            <h2>{{ folder }}</h2>  <!-- Folder Name (e.g., CPX, Disease, etc.) -->
+            <ul>
+                {% for post in posts %}
+                <li>
+                    <a href="/post/{{ post.id }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <hr>
+        {% endfor %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ECR</p>
+    </footer>
+</body>
+</html>

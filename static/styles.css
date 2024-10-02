@@ -1,0 +1,36 @@
+main {
+    padding: 1rem;
+    overflow: auto;  /* Allow scrolling if content overflows */
+    max-height: calc(100vh - 150px);  /* Adjust height so the footer doesn't overlap */
+}
+
+section {
+    margin-bottom: 2rem;  /* Add spacing between sections */
+}
+
+ul {
+    list-style-type: none;  /* Remove bullet points */
+}
+
+h2 {
+    font-size: 1.5rem;  /* Section headers */
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #1a0dab;  /* Link color */
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add this for individual blog post styling */
+article {
+    margin-left: 10px;  /* Reduce left margin */
+    margin-right: 10px;  /* Reduce right margin */
+    padding: 1rem;
+    border: 1px solid #ddd;  /* Optional: Add a subtle border */
+    border-radius: 5px;  /* Optional: Add rounded corners */
+}
