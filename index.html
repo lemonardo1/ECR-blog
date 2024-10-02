@@ -35,20 +35,10 @@
     <p>의학적 내용의 md 파일을 아래 리스트에서 확인하세요.</p>
     
     <ul id="md-list"></ul>
-
-    <script>
-        const folders = ['CPX', 'disease', 'Meta', 'Plan']; // 하위 폴더 목록
-        const mdList = document.getElementById('md-list');
-
-        folders.forEach(folder => {
-            // 각 폴더에서 md 파일을 불러오기 위한 가상의 URL을 구성 (GitHub Pages에서는 파일 목록 자동 로드 불가)
-            const listItem = document.createElement('li');
-            const folderLink = document.createElement('a');
-            folderLink.href = `./data/${folder}/`; // 각 폴더로 이동
-            folderLink.textContent = folder + ' 폴더의 markdown 파일 보러가기';
-            listItem.appendChild(folderLink);
-            mdList.appendChild(listItem);
-        });
-    </script>
+        <li><a href="./data/CPX/index.html">CPX 폴더의 markdown 파일 보러가기</a></li>
+        <li><a href="./data/disease/index.html">disease 폴더의 markdown 파일 보러가기</a></li>
+        <li><a href="./data/Meta/index.html">Meta 폴더의 markdown 파일 보러가기</a></li>
+        <li><a href="./data/Plan/index.html">Plan 폴더의 markdown 파일 보러가기</a></li>
+    </ul>
 </body>
 </html>
