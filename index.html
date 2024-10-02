@@ -1,69 +1,54 @@
-/**
- * 이 함수는 GitHub 페이지에서 사용하기 위한 것입니다.
- * 주어진 숫자 배열을 입력받아, 배열의 모든 요소를 제곱한 새로운 배열을 반환합니다.
- *
- * @param {number[]} numbers - 제곱할 숫자 배열
- * @returns {number[]} - 입력 배열의 각 요소를 제곱한 새로운 배열
- */
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>My Blog</title>
-     <link rel="stylesheet" href="/static/styles.css">
- </head>
- <body>
-     <header>
-         <h1><a href="/" style="text-decoration: none; color: inherit;">ECR Blog</a></h1>
-     </header>
- 
-     <main id="content">
-         <h2>Loading posts...</h2>
-     </main>
- 
-     <footer>
-         <p>&copy; 2024 ECR</p>
-     </footer>
- 
-     <script>
-         async function fetchMarkdownFiles() {
-             const response = await fetch('/data/CPX/');
-             const text = await response.text();
-             const parser = new DOMParser();
-             const htmlDocument = parser.parseFromString(text, 'text/html');
-             const links = Array.from(htmlDocument.querySelectorAll('a'))
-                 .filter(link => link.href.endsWith('.md'));
- 
-             return links.map(link => ({
-                 url: link.href,
-                 title: link.textContent || link.href.split('/').pop()
-             }));
-         }
- 
-         function createPostList(posts) {
-             const content = document.getElementById('content');
-             content.innerHTML = '<h2>Blog Posts</h2><ul></ul>';
-             const ul = content.querySelector('ul');
- 
-             posts.forEach(post => {
-                 const li = document.createElement('li');
-                 const a = document.createElement('a');
-                 a.href = post.url;
-                 a.textContent = post.title;
-                 li.appendChild(a);
-                 ul.appendChild(li);
-             });
-         }
- 
-         fetchMarkdownFiles().then(posts => {
-             createPostList(posts);
-         }).catch(error => {
-             const content = document.getElementById('content');
-             content.innerHTML = '<p>Error loading posts.</p>';
-             console.error(error);
-         });
-     </script>
- </body>
- </html>
- 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECR Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #0073e6;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>ECR Blog</h1>
+    <p>의학적 내용의 md 파일을 아래 리스트에서 확인하세요.</p>
+    
+    <ul id="md-list"></ul>
+
+    <script>
+        const folders = ['CPX', 'disease', 'Meta', 'Plan']; // 하위 폴더 목록
+        const mdList = document.getElementById('md-list');
+
+        folders.forEach(folder => {
+            // 각 폴더에서 md 파일을 불러오기 위한 가상의 URL을 구성 (GitHub Pages에서는 파일 목록 자동 로드 불가)
+            const listItem = document.createElement('li');
+            const folderLink = document.createElement('a');
+            folderLink.href = `./data/${folder}/`; // 각 폴더로 이동
+            folderLink.textContent = folder + ' 폴더의 markdown 파일 보러가기';
+            listItem.appendChild(folderLink);
+            mdList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
