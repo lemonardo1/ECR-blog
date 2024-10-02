@@ -28,7 +28,7 @@
  
      <script>
          async function fetchMarkdownFiles() {
-             const response = await fetch('/data/');
+             const response = await fetch('/data/CPX/');
              const text = await response.text();
              const parser = new DOMParser();
              const htmlDocument = parser.parseFromString(text, 'text/html');
